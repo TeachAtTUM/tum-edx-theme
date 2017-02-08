@@ -81,7 +81,8 @@ from openedx.core.djangoapps.theming import helpers as theming_helpers
 <main id="main" aria-label="Content" tabindex="-1">
   <section class="my-courses" id="my-courses">
     <header class="wrapper-header-courses">
-      <h2 class="header-courses">${_("My Courses")}</h2>
+      ## <h2 class="header-courses">${_("My Courses")}</h2>
+      <h2 class="header-courses">Meine Kurse</h2>
     </header>
 
 
@@ -107,11 +108,13 @@ from openedx.core.djangoapps.theming import helpers as theming_helpers
       </ul>
     % else:
       <section class="empty-dashboard-message">
-        <p>${_("You are not enrolled in any courses yet.")}</p>
+        ## <p>${_("You are not enrolled in any courses yet.")}</p>
+        <p>Du hast noch keinen Kurs gestartet.</p>
 
         % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
           <a href="${marketing_link('COURSES')}">
-            ${_("Explore courses")}
+            ## ${_("Explore courses")}
+            Kurse Entdecken
           </a>
         %endif
       </section>
