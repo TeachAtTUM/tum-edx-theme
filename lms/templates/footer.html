@@ -26,7 +26,11 @@
       <div class="site-details">
           <nav class="site-nav" aria-label="${_("About edX")}">
               % for link in footer["navigation_links"]:
-              <a href="${link['url']}">${link['title']}</a>
+              % if link['title'] == 'Kontakt':
+                <a href="${link['url']}">Impressum</a>
+              % else:
+                <a href="${link['url']}">${link['title']}</a>
+              % endif
               % endfor
           </nav>
           <nav class="legal-notices" aria-label="${_("Legal")}">
