@@ -1,0 +1,125 @@
+## mako
+<%!
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<%namespace name='static' file='static_content.html'/>
+
+## WARNING: These files are specific to edx.org and are not used in installations outside of that domain. Open edX users will want to use the file "footer.html" for any changes or overrides.
+<footer id="footer-edx-v3" role="contentinfo" aria-label="${_("Page Footer")}"
+  ## When rendering the footer through the branding API,
+  ## the direction may not be set on the parent element,
+  ## so we set it here.
+  % if bidi:
+    dir=${bidi}
+  % endif
+>
+    <h2 class="sr footer-about-title">${_("About edX")}</h2>
+    <div class="footer-content-wrapper">
+      <div class="footer-logo">
+          <a href="${marketing_link('ROOT')}">
+            <img alt="edX Home Page" src="${footer['logo_image']}">
+          </a>
+      </div>
+
+      <div class="site-details">
+          <nav class="site-nav" aria-label="${_("About edX")}">
+              % for link in footer["navigation_links"]:
+              <a href="${link['url']}">${link['title']}</a>
+              % endfor
+          </nav>
+          <nav class="legal-notices" aria-label="${_("Legal")}">
+              % for link in footer["legal_links"]:
+              <a href="${link['url']}">${link['title']}</a>
+              % endfor
+          </nav>
+          <p class="copyright">${_(
+          u"\u00A9 2016 edX Inc.  All rights reserved except where noted.  "
+          u"EdX, Open edX and the edX and Open EdX logos are registered trademarks "
+          u"or trademarks of edX Inc."
+          )}
+          </p>
+
+          ## The OpenEdX link may be hidden when this view is served
+          ## through an API to partner sites (such as marketing sites or blogs),
+          ## which are not technically powered by OpenEdX.
+          % if not hide_openedx_link:
+          <div class="openedx-link">
+            <a href="${footer['openedx_link']['url']}" title="${footer['openedx_link']['title']}">
+              <img alt="${footer['openedx_link']['title']}" src="${footer['openedx_link']['image']}" width="140">
+            </a>
+          </div>
+          % endif
+      </div>
+
+      <div class="external-links">
+        <ul class="social-media-links">
+            % for link in footer['social_links']:
+            <li class="list-item">
+                <a href="${link['url']}" class="sm-link external" title="${link['title']}" rel="noreferrer">
+                    <span class="icon fa ${link['icon-class']}" aria-hidden="true"></span>
+                    <span class="sr">${link['action']}</span>
+                </a>
+            </li>
+            % endfor
+        </ul>
+
+        <ul class="mobile-app-links">
+            % for link in footer['mobile_links']:
+            <li class="list-item">
+                <a href="${link['url']}" class="app-link external">
+                    <img alt="${link['title']}" src="${link['image']}">
+                </a>
+            </li>
+            % endfor
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="directory-bar directory-bar--transparent">
+        <div class="row">
+          <div class="twelve columns">
+            <nav class="directory-nav directory-nav--extended"><ul class="directory-nav__list"><li class="js-directory-nav-item directory-nav__item directory-nav__item--first directory-nav__item--1-level two columns"><span class="js-directory-nav-toggle directory-nav__toggle"></span><a href="https://www.tum.de/die-tum/" class="directory-nav__link directory-nav__link--1-level">Die TUM</a><ul class="js-directory-nav-submenu directory-nav__list directory-nav__list--2-level"><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/die-universitaet/" class="directory-nav__link">Die Universität</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/aktuelles/" class="directory-nav__link">Aktuelles</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/magazine/" class="directory-nav__link">Magazine</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/fakultaeten/" class="directory-nav__link">Fakultäten</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/universitaetsbibliothek/" class="directory-nav__link" target="_blank">Universitäts­bibliothek</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/auszeichnungen/" class="directory-nav__link">Auszeich­nungen und Ehrungen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/kliniken/" class="directory-nav__link">Kliniken</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/arbeiten-an-der-tum/" class="directory-nav__link">Arbeiten an der TUM</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/fan-der-tum/" class="directory-nav__link">Fan der TUM?</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/kontakt-und-anfahrt/" class="directory-nav__link">Kontakt und Anfahrt</a></li></ul></li><li class="js-directory-nav-item directory-nav__item directory-nav__item--1-level two columns"><span class="js-directory-nav-toggle directory-nav__toggle"></span><a href="https://www.tum.de/forschung/" class="directory-nav__link directory-nav__link--1-level">Forschung</a><ul class="js-directory-nav-submenu directory-nav__list directory-nav__list--2-level"><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/fakultaeten/" class="directory-nav__link">Fakultäten</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/forschungszentren/" class="directory-nav__link">Forschungs­zentren</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/exzellenzinitiative/" class="directory-nav__link" target="_blank">Exzellenz­initiative</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/projekte/" class="directory-nav__link">Projekte</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/kooperationen/" class="directory-nav__link">Kooperationen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/forschungsfoerderung/" class="directory-nav__link" target="_blank">Forschungs­förderung</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/tum-graduate-school/" class="directory-nav__link" target="_blank">TUM Graduate School</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/forschung/postdocs/" class="directory-nav__link">Postdocs</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/die-tum/arbeiten-an-der-tum/stellenangebote/" class="directory-nav__link">Vakante Professuren</a></li></ul></li><li class="js-directory-nav-item directory-nav__item directory-nav__item--1-level two columns"><span class="js-directory-nav-toggle directory-nav__toggle"></span><a href="https://www.tum.de/studium/" class="directory-nav__link directory-nav__link--1-level">Studium</a><ul class="js-directory-nav-submenu directory-nav__list directory-nav__list--2-level"><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/lehren/" class="directory-nav__link" target="_blank">Lehren</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/lernen/" class="directory-nav__link">Lernen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/studienangebot/" class="directory-nav__link">Studienangebot</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/internationale-studierende/" class="directory-nav__link">Internationale Studierende</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/beratung/" class="directory-nav__link">Beratung</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/bewerbung/" class="directory-nav__link">Bewerbung</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/studienfinanzierung/" class="directory-nav__link">Studien­finanzierung</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/im-studium/" class="directory-nav__link">Im Studium</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/studienabschluss/" class="directory-nav__link">Studienabschluss</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/weiterbildung/" class="directory-nav__link">Weiterbildung</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/beratung/hotline-und-service-desk/" class="directory-nav__link">Kontakt</a></li></ul></li><li class="js-directory-nav-item directory-nav__item directory-nav__item--1-level two columns"><span class="js-directory-nav-toggle directory-nav__toggle"></span><a href="https://www.tum.de/unileben/" class="directory-nav__link directory-nav__link--1-level">Unileben</a><ul class="js-directory-nav-submenu directory-nav__list directory-nav__list--2-level"><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/studentisches-leben/" class="directory-nav__link">Studentisch­es Leben</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/wohnen/" class="directory-nav__link">Wohnen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/sport/" class="directory-nav__link">Sport</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/musik-und-kunst/" class="directory-nav__link">Musik und Kunst</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/veranstaltungen/" class="directory-nav__link">Veranstal­tungen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/mentoring/" class="directory-nav__link" target="_blank">Mentoring</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/alumni/" class="directory-nav__link" target="_blank">Alumni</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/tum-und-schule/" class="directory-nav__link" target="_blank">TUM und Schule</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/unileben/tum-shop/" class="directory-nav__link" target="_blank">TUM-Shop</a></li></ul></li><li class="js-directory-nav-item directory-nav__item directory-nav__item--1-level two columns"><span class="js-directory-nav-toggle directory-nav__toggle"></span><a href="https://www.tum.de/global/" class="directory-nav__link directory-nav__link--1-level">Global</a><ul class="js-directory-nav-submenu directory-nav__list directory-nav__list--2-level"><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/global/standorte-weltweit/" class="directory-nav__link">Standorte weltweit</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/global/tum-asia/" class="directory-nav__link">TUM Asia</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/studium/internationale-studierende/" class="directory-nav__link">International studieren</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/global/austauschshyprogramme/" class="directory-nav__link" target="_blank">Austausch­programme</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/global/internationale-allianzen/" class="directory-nav__link" target="_blank">Internationale Allianzen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/global/sprachenzentrum/" class="directory-nav__link" target="_blank">Sprachen­zentrum</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/global/kontakt/" class="directory-nav__link">Kontakt</a></li></ul></li><li class="js-directory-nav-item directory-nav__item directory-nav__item--1-level two columns"><span class="js-directory-nav-toggle directory-nav__toggle"></span><a href="https://www.tum.de/wirtschaft/" class="directory-nav__link directory-nav__link--1-level">Wirtschaft</a><ul class="js-directory-nav-submenu directory-nav__list directory-nav__list--2-level"><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/entrepreneurship/" class="directory-nav__link">Entrepre­neurship</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/technologietransfer/" class="directory-nav__link">Technologie­transfer</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/kooperationen/" class="directory-nav__link">Koopera­tionen</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/absolventen-recruiting/" class="directory-nav__link" target="_blank">Absolventen Recruiting</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/foerdern-und-stiften/" class="directory-nav__link" target="_blank">Fördern und Stiften</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/deutschlandstipendium/" class="directory-nav__link">Deutschland­stipendium</a></li><li class="directory-nav__item directory-nav__item--2-level"><a href="https://www.tum.de/wirtschaft/kontakt/" class="directory-nav__link">Kontakt</a></li></ul></li></ul></nav>
+          </div>
+        </div>
+      </div>
+      <div class="meta-bar">
+          <div class="row">
+            <div class="twelve columns">
+              <nav class="meta-nav meta-nav--bold"><ul class="meta-nav__list"><li class="meta-nav__item"><a href="https://www.tum.de/die-tum/arbeiten-an-der-tum/stellenangebote/" class="meta-nav__link">Jobs</a></li><li class="meta-nav__item"><a href="https://www.tum.de/sitemap/" class="meta-nav__link">Sitemap</a></li><li class="meta-nav__item"><a href="https://www.tum.de/die-tum/kontakt-und-anfahrt/feedback/" class="meta-nav__link">Feedback</a></li><li class="meta-nav__item"><a href="https://www.tum.de/presse/" class="meta-nav__link" target="_blank">Presse</a></li><li class="meta-nav__item"><a href="https://www.tum.de/die-tum/kontakt-und-anfahrt/impressum/" class="meta-nav__link">Impressum</a></li><li class="meta-nav__item"><a href="https://www.tum.de/datenschutz/" class="meta-nav__link">Datenschutz</a></li></ul></nav>
+              <nav class="social-nav"><ul class="social-nav__list"><li class="social-nav__item"><a href="https://www.facebook.com/TU.Muenchen" target="_blank" class="social-nav__link facebook icon-facebook icon-sprite" title="Facebook">&nbsp;</a></li><li class="social-nav__item"><a href="https://twitter.com/TU_Muenchen" target="_blank" class="social-nav__link twitter icon-twitter icon-sprite" title="Twitter">&nbsp;</a></li><li class="social-nav__item"><a href="http://www.youtube.com/TUMuenchen1" target="_blank" class="social-nav__link social-nav__link--last social-nav__link--youtube youtube icon-youtube icon-sprite" title="YouTube">&nbsp;</a></li></ul><!-- Piwik Image Tracker --> <img src="//www.piwik.tum.de/piwik.php?idsite=1&amp;rec=1" style="border: 0px; display: none !important;" alt=""> <!-- End Piwik --></nav>
+            </div>
+          </div>
+          
+        <div class="row hide-on-mobile">
+          <div class="twelve columns">
+            <a href="http://www.tum-universitaetsstiftung.de" target="_blank" class="partners-of-excellence-link icon-partners-of-excellence"><span class="partners-of-excellence-link__title">TUM Partners of Excellence</span>Airbus · Altana · Audi · Bayerischer Bauindustrieverband · BMW · Bosch · Clariant · Dräxlmaier · Evonik&nbsp;Industries · Herrenknecht · Linde · MAN · Nestlé · Rohde&nbsp;&amp;&nbsp;Schwarz · RWE · SGL&nbsp;Carbon&nbsp;· Siemens · Süd-Chemie · TÜV Süd · Wacker Chemie</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if bidi == 'rtl':
+<%static:css group='style-lms-footer-edx-rtl'/>
+% else:
+<%static:css group='style-lms-footer-edx'/>
+% endif
+
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ --><link rel="stylesheet" href="${static.url("css/tum.css")}" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+% if footer_js_url:
+  <script type="text/javascript" src="${footer_js_url}"></script>
+% endif
