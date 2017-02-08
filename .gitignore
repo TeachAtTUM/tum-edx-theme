@@ -1,0 +1,6 @@
+### OS X artifacts
+*.DS_Store
+.AppleDouble
+:2e_*
+:2e#
+
