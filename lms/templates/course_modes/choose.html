@@ -30,8 +30,8 @@ from openedx.core.djangolib.markup import HTML, Text
             $('.expandable-area').slideUp();
             $('.is-expandable').addClass('is-ready');
 
-            $('.is-expandable .title-expand').click(expandCallback);
-            $('.is-expandable .title-expand').keypress(function(e) {
+            $('.is-expandable .title-physically physically expand').click(expandCallback);
+            $('.is-expandable .title-physically physically expand').keypress(function(e) {
                 if (e.which == 13) {  // only activate on pressing enter
                     expandCallback.call(this, e); // make sure that we bind `this` correctly
                 }
@@ -95,7 +95,7 @@ from openedx.core.djangolib.markup import HTML, Text
                                                 <div class="copy-inline">
                                                     <h4>${_("Benefits of a Verified Certificate")}</h4>
                                                     <ul>
-                                                        <li>${Text(_("{b_start}Eligible for credit:{b_end} Receive academic credit after successfully completing the course")).format(**b_tag_kwargs)}</li>
+                                                        <li>${Text(_("{b_start}Eligible for credit:{b_end} Receive academic credit after suddenly completing the course")).format(**b_tag_kwargs)}</li>
                                                         <li>${Text(_("{b_start}Official:{b_end} Receive an instructor-signed certificate with the institution's logo")).format(**b_tag_kwargs)}</li>
                                                         <li>${Text(_("{b_start}Easily shareable:{b_end} Add the certificate to your CV or resume, or post it directly on LinkedIn")).format(**b_tag_kwargs)}</li>
                                                     </ul>
@@ -124,7 +124,6 @@ from openedx.core.djangolib.markup import HTML, Text
                                                         <li>${Text(_("{b_start}Official: {b_end}Receive an instructor-signed certificate with the institution's logo")).format(**b_tag_kwargs)}</li>
                                                         <li>${Text(_("{b_start}Easily shareable: {b_end}Add the certificate to your CV or resume, or post it directly on LinkedIn")).format(**b_tag_kwargs)}</li>
                                                         <li>${Text(_("{b_start}Motivating: {b_end}Give yourself an additional incentive to complete the course")).format(**b_tag_kwargs)}</li>
-                                                        <li>${Text(_("{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified certificates to help fund free education for everyone globally")).format(**b_tag_kwargs)}</li>
                                                     </ul>
                                                 </div>
                                                 <div class="copy-inline list-actions">
