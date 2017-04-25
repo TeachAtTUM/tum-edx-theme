@@ -70,6 +70,30 @@
       </p>
     </div>
     % endif
+
+    <div class="external-links">
+      <ul class="social-media-links">
+          % for link in footer['social_links']:
+          <li class="list-item">
+              <a href="${link['url']}" class="sm-link external" title="${link['title']}" rel="noreferrer">
+                  <span class="icon fa ${link['icon-class']}" aria-hidden="true"></span>
+                  <span class="sr">${link['action']}</span>
+              </a>
+          </li>
+          % endfor
+      </ul>
+
+      <ul class="mobile-app-links">
+        % for link in footer['mobile_links']:
+        <li class="list-item">
+            <a href="${link['url']}" class="app-link external">
+                <img alt="${link['title']}" src="${link['image']}">
+            </a>
+        </li>
+        % endfor
+      </ul>
+    </div>
+
   </footer>
 </div>
 % if include_dependencies:
