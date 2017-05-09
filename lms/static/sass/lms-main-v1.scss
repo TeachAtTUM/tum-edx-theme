@@ -53,8 +53,12 @@ footer#footer-openedx {
     }
   }
 }
-.header-global.slim {
+.header-global {
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+	h1.logo {
+		margin-top: -8px;
+	}
 }
 
 .header-global.slim {
@@ -88,7 +92,9 @@ footer#footer-openedx {
 
 	    .intro-inner-wrapper {
 	    	box-shadow: none;
+	    	border: 0;
 	    	border-bottom: 1px solid #cacaca;
+	    	padding-top: 8px;
 		}
 	}
 }
