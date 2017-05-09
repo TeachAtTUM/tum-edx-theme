@@ -101,7 +101,7 @@ footer#footer-openedx {
 
 // Modernize home
 .home {
-	header {
+	> header {
 	    background: white;
 	    box-shadow: none;
 	    height: 200px;
@@ -115,5 +115,9 @@ footer#footer-openedx {
 
     .courses-container {
     	padding-bottom: 50px;
+    }
+
+    .highlighted-courses .courses {
+      padding: 0px 0 15px; // Take away top padding
     }
 }
