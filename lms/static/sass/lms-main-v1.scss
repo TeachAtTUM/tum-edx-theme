@@ -98,3 +98,16 @@ footer#footer-openedx {
 		}
 	}
 }
+
+// change home
+.home header {
+    background: white;
+    box-shadow: none;
+    height: 200px;
+
+    .title {
+	    box-shadow: none;
+	    border-radius: 6px;
+	    border: 1px solid #ddd;
+    }
+}
