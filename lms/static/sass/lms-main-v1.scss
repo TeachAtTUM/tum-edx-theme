@@ -53,3 +53,24 @@ footer#footer-openedx {
     }
   }
 }
+
+.header-global.slim {
+// Keep user element from being pushed down
+	.course-header {
+	width: 45%;
+	}
+
+// Get down | pipe
+	&:before {
+	  top: 3px;
+	}
+
+// Get down course title
+	h2 {
+	    margin-top: 12px;
+	}
+
+	img {
+		vertical-align: baseline;
+	}
+}
