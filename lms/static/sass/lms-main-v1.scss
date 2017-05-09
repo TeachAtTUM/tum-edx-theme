@@ -53,11 +53,14 @@ footer#footer-openedx {
     }
   }
 }
+.header-global.slim {
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
 
 .header-global.slim {
 // Keep user element from being pushed down
 	.course-header {
-	width: 45%;
+		width: 45%;
 	}
 
 // Get down | pipe
@@ -72,5 +75,20 @@ footer#footer-openedx {
 
 	img {
 		vertical-align: baseline;
+	}
+}
+
+// Change about page design to more modern
+.course-info {
+	header.course-profile {
+		padding-top: 0;
+		box-shadow: none;
+    	border-bottom: 1px solid #cacaca
+    	height: 250px;
+
+	    .intro-inner-wrapper {
+	    	box-shadow: none;
+	    	border-bottom: 1px solid #cacaca
+		}
 	}
 }
