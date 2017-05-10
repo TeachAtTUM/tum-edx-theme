@@ -37,6 +37,7 @@
   font-size: $textsize;
   font-weight: bold;
   // @include linear-gradient(top, $base-color 0%, $second-stop 50%, $third-stop 50%, $fourth-stop 100%);
+  background-color: $base-color;
   padding: $padding;
   text-align: center;
   text-decoration: none;
@@ -56,6 +57,7 @@
     }
 
     cursor: pointer;
+    background-color: $second-stop-hover;
     // @include linear-gradient(top, $first-stop-hover  0%,
     //                               $second-stop-hover 50%,
     //                               $third-stop-hover  50%,
