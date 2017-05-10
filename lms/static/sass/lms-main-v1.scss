@@ -6,11 +6,11 @@
 // @import 'lms/static/sass/lms-main-v1';
 
 // Instead include the mixin stuff here
-@import 'bourbon/bourbon'; /
-@import 'vendor/bi-app/bi-app-ltr';
-@import 'base/reset';
-@import 'base/variables';
-@import 'base/mixins';
+@import 'lms/static/sass/bourbon/bourbon'; /
+@import 'lms/static/sass/vendor/bi-app/bi-app-ltr';
+@import 'lms/static/sass/base/reset';
+@import 'lms/static/sass/base/variables';
+@import 'lms/static/sass/base/mixins';
 
 @import 'build-base-custom';
 
