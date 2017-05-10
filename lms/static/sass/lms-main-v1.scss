@@ -5,8 +5,16 @@
 // Don't import this because we need to override build-base behavior
 // @import 'lms/static/sass/lms-main-v1';
 
-@import 'lms/static/sass/build-base-v1';
+// Instead include the mixin stuff here
+@import 'bourbon/bourbon'; /
+@import 'vendor/bi-app/bi-app-ltr';
+@import 'base/reset';
+@import 'base/variables';
+@import 'base/mixins';
+
 @import 'build-base-custom';
+
+// And edx stuff here
 @import 'lms/static/sass/build-lms-v1'; // shared app style assets/rendering
 
 
