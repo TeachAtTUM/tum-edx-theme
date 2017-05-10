@@ -115,6 +115,13 @@ footer#footer-openedx {
           border: 1px solid #ddd;
           border-radius: 4px;
         }
+
+        .register.disabled {
+          background: white;
+          border-radius: 6px;
+          border: 1px solid #ddd;
+          line-height: 1.5em;
+        }
 		}
 	}
 }
