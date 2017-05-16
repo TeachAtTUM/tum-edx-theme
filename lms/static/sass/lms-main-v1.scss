@@ -103,7 +103,9 @@ footer#footer-openedx {
 		padding-top: 0;
 		box-shadow: none;
     	border-bottom: 1px solid #cacaca;
-    	height: 280px;
+      height: inherit;
+    	min-height: 250px;
+      padding-bottom: 30px;
 
 	    .intro-inner-wrapper {
 	    	box-shadow: none;
